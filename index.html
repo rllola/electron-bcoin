@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <script type="text/javascript">
+    var bcoin = require('bcoin')
+    var _ = require('lodash')
+
+    let logger = new bcoin.logger({
+      level: 'info',
+      color: true
+    })
+
+    let options = {
+      db: 'leveldb',
+      prefix: __dirname,
+      network : 'testnet',
+      logger  : logger,
+      httpPort: 18332
+    }
+    // Create spvnode
+    var node = new bcoin.spvnode(options)
+
+    if (!node.wallet) {
+      console.log('We need to open wallet')
+    }
+
+    // Open
+    node.open().then(() =>{
+      console.log('Hey')
+      node.connect()
+      node.startSync()
+    })
+
+    if (node.wallet) {
+      console.log('Wallet open')
+    }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "electron-bcoin",
+  "version": "0.0.0",
+  "description": "Try using bcoin in electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bcoin",
+    "electron"
+  ],
+  "author": "Me",
+  "license": "MIT",
+  "dependencies": {
+    "bcoin": "git+https://git@github.com/bcoin-org/bcoin.git#master",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "electron": "^1.4.15"
+  }
+}
