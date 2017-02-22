@@ -32,8 +32,10 @@
     // Open
     node.open().then(() =>{
       console.log('Hey')
-      node.connect()
-      node.startSync()
+      node.connect().then(() =>{
+        node.startSync()
+
+      })
     })
 
     if (node.wallet) {
