@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "rebuild-leveldown": "HOME=~/.electron-gyp electron rebuild-leveldown.js"
   },
   "keywords": [
     "bcoin",
@@ -14,7 +14,7 @@
   "author": "Me",
   "license": "MIT",
   "dependencies": {
-    "bcoin": "git+https://git@github.com/bcoin-org/bcoin.git#master",
+    "bcoin": "^1.0.0-beta.12",
     "lodash": "^4.17.4"
   },
   "devDependencies": {

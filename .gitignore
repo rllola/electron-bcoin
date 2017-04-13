@@ -1,3 +1,4 @@
 node_modules/
 spvchain.ldb/
 walletdb.ldb/
+npm-debug.log

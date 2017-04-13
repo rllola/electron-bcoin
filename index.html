@@ -19,8 +19,12 @@
       db: 'leveldb',
       prefix: __dirname,
       network : 'testnet',
-      logger  : logger,
-      httpPort: 18332
+      port: 18332,
+      plugins: ['walletdb'],
+      logger  : null,
+      loader: function (name) {
+          if (name === 'walletdb') return bcoin.walletplugin
+      }
     }
     // Create spvnode
     var node = new bcoin.spvnode(options)
@@ -31,16 +35,41 @@
 
     // Open
     node.open().then(() =>{
-      console.log('Hey')
       node.connect().then(() =>{
         node.startSync()
 
+        node.plugins.walletdb.get('primary').then((wallet) => {
+          wallet.on('balance', (balance) => {
+            console.log(balance)
+          })
+
+          console.log(wallet.getAddress().toString())
+
+          wallet.getBalance().then((balance) => {
+            console.log('Balance :', balance)
+
+            if (balance.unconfirmed > 0) {
+
+              const address = new bcoin.address.fromBase58('mtCkWpndZyZuJ6TChF81S3osqgZo95o7ar')
+              const output = bcoin.output.fromScript(address, 10000)
+              const feeRate = 4912
+
+              wallet.send({
+                sort: false,
+                outputs: [output],
+                rate: feeRate
+              }).then(() => {
+                console.log('Success')
+              }).catch(() => {
+                console.error('Something bad happened')
+              })
+            } else {
+              console.error('Unsufficient funds')
+            }
+          })
+        })
       })
     })
-
-    if (node.wallet) {
-      console.log('Wallet open')
-    }
 
     </script>
   </body>
