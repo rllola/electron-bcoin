@@ -10,8 +10,12 @@
     var bcoin = require('bcoin')
     var _ = require('lodash')
 
+    bcoin.set({
+      useWorkers:false // Because there is no workers in electron
+    })
+
     let logger = new bcoin.logger({
-      level: 'info',
+      level: 'warning',
       color: true
     })
 
@@ -21,7 +25,7 @@
       network : 'testnet',
       port: 18332,
       plugins: ['walletdb'],
-      logger  : null,
+      logger  : logger,
       loader: function (name) {
           if (name === 'walletdb') return bcoin.walletplugin
       }
@@ -58,9 +62,9 @@
                 sort: false,
                 outputs: [output],
                 rate: feeRate
-              }).then(() => {
+              }).then((transaction) => {
                 console.log('Success')
-              }).catch(() => {
+              }).catch((error) => {
                 console.error('Something bad happened')
               })
             } else {
