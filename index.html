@@ -10,6 +10,10 @@
     var bcoin = require('bcoin')
     var _ = require('lodash')
 
+    // Use of pure js bcoin library because electron doesn't compile with openssl
+    // which is needed.
+    process.env.BCOIN_NO_NATIVE = '1'
+
     bcoin.set({
       useWorkers:false // Because there is no workers in electron
     })
