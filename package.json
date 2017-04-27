@@ -2,10 +2,12 @@
   "name": "electron-bcoin",
   "version": "0.0.0",
   "description": "Try using bcoin in electron",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "electron .",
-    "postinstall": "electron-rebuild"
+    "start": "electron-forge start",
+    "postinstall": "electron-rebuild",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "keywords": [
     "bcoin",
@@ -15,10 +17,43 @@
   "license": "MIT",
   "dependencies": {
     "bcoin": "^1.0.0-beta.12",
+    "electron-compile": "^6.4.0",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "electron": "^1.4.15",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
+    "electron-prebuilt-compile": "1.6.5",
     "electron-rebuild": "^1.5.7"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {},
+      "electronWinstallerConfig": {
+        "name": ""
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": ""
+      }
+    }
   }
 }
