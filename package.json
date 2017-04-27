@@ -43,16 +43,16 @@
       },
       "electronPackagerConfig": {},
       "electronWinstallerConfig": {
-        "name": ""
+        "name": "electron-bcoin"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
       "github_repository": {
-        "owner": "",
-        "name": ""
+        "owner": "rllola",
+        "name": "electron-bcoin"
       },
       "windowsStoreConfig": {
-        "packageName": ""
+        "packageName": "electron-bcoin"
       }
     }
   }
