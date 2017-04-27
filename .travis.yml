@@ -10,6 +10,8 @@ addons:
   apt:
     packages:
     - rpm
+before_install:
+  - 'if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export CFLAGS="-I/usr/local/opt/openssl/include $CFLAGS" LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"; fi'
 install:
   - npm install
 script:
