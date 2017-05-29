@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  squirrel:
+    image: gitbook/nuts:3.1.1
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=squirrel-bcoin"
+      - "traefik.frontend.rule=Host:bcoin.lola.ninja"
+      - "traefik.docker.network=reverseproxy_default"
+    networks:
+      - "reverseproxy_default"
+
+networks:
+  reverseproxy_default:
+    external:
+      name: reverseproxy_default
