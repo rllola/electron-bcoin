@@ -1,10 +1,9 @@
 const electron = require('electron')
 const APP_VERSION = require('../package.json').version
 
-const AUTO_UPDATE_URL = 'https://bcoin.lola.ninja/' +
+const AUTO_UPDATE_URL = 'https://bcoin.lola.ninja/update' +
   '?version=' + APP_VERSION +
-  '&platform=' + process.platform +
-  '&sysarch=' + 'x64'
+  '&platform=' + process.platform
 
 function init () {
   if (process.platform === 'linux') {
