@@ -1,6 +1,6 @@
 {
   "name": "electron-bcoin",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Try using bcoin in electron",
   "main": "src/main.js",
   "scripts": {
