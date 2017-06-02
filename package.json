@@ -1,6 +1,6 @@
 {
   "name": "electron-bcoin",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Try using bcoin in electron",
   "main": "src/main.js",
   "scripts": {
@@ -18,6 +18,7 @@
   "dependencies": {
     "bcoin": "^1.0.0-beta.12",
     "electron-compile": "^6.4.0",
+    "electron-squirrel-startup": "^1.0.0",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
@@ -43,8 +44,7 @@
       },
       "electronPackagerConfig": {},
       "electronWinstallerConfig": {
-        "name": "electron-bcoin",
-        "remoteReleases": "https://bcoin.lola.ninja/update/win32/0.1.5"
+        "name": "electron-bcoin"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
