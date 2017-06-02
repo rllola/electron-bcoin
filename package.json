@@ -1,6 +1,6 @@
 {
   "name": "electron-bcoin",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Try using bcoin in electron",
   "main": "src/main.js",
   "scripts": {
@@ -43,7 +43,8 @@
       },
       "electronPackagerConfig": {},
       "electronWinstallerConfig": {
-        "name": "electron-bcoin"
+        "name": "electron-bcoin",
+        "remoteReleases": "https://bcoin.lola.ninja/update/win32/0.1.5"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
