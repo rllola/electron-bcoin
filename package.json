@@ -1,8 +1,10 @@
 {
   "name": "electron-bcoin",
+  "productName": "Bcoin",
   "version": "0.1.7",
   "description": "Try using bcoin in electron",
   "main": "src/main.js",
+  "private": true,
   "scripts": {
     "start": "electron-forge start",
     "test": "echo 'No test !' && exit 0",
@@ -13,8 +15,8 @@
     "bcoin",
     "electron"
   ],
-  "author": "Me",
-  "license": "MIT",
+  "author": "Lola Rigaut-Luczak",
+  "license": "WTFPL",
   "dependencies": {
     "bcoin": "^1.0.0-beta.12",
     "electron-compile": "^6.4.0",
@@ -42,9 +44,12 @@
           "rpm"
         ]
       },
-      "electronPackagerConfig": {},
+      "electronPackagerConfig": {
+        "asar": true
+      },
       "electronWinstallerConfig": {
-        "name": "electron-bcoin"
+        "name": "electron-bcoin",
+        "certificateFile": "cert.pfx"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
