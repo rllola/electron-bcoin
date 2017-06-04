@@ -1,6 +1,12 @@
 platform:
   - x64
 
+environment:
+  ELECTRON_FORGE_ELECTRON_WINSTALLER_CONFIG_CERTIFICATE_PASSWORD:
+    secure: <encryped-value>
+  GITHUB_TOKEN:
+    secure: <encryped-value>
+
 init:
   - git config --global core.autocrlf input
 
