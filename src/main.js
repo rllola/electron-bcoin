@@ -13,6 +13,9 @@ const updater = require('./updater.js')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
+// Handle squirrel event. Avoid calling for updates when install
+if(require('electron-squirrel-startup')) app.quit();
+
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
@@ -38,8 +41,6 @@ function createWindow () {
     mainWindow = null
   })
 }
-
-if(require('electron-squirrel-startup')) app.quit();
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
