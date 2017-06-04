@@ -1,6 +1,8 @@
 platform:
   - x64
 
+skip_tags: true
+
 environment:
   ELECTRON_FORGE_ELECTRON_WINSTALLER_CONFIG_CERTIFICATE_PASSWORD:
     secure: <encryped-value>
