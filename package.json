@@ -1,7 +1,7 @@
 {
   "name": "bcoin",
   "productName": "Bcoin",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Try using bcoin in electron",
   "main": "src/main.js",
   "private": true,
@@ -20,6 +20,7 @@
   "dependencies": {
     "bcoin": "^1.0.0-beta.12",
     "electron-compile": "^6.4.0",
+    "electron-is-dev": "^0.1.2",
     "electron-squirrel-startup": "^1.0.0",
     "lodash": "^4.17.4"
   },
@@ -44,8 +45,7 @@
           "rpm"
         ]
       },
-      "electronPackagerConfig": {
-      },
+      "electronPackagerConfig": {},
       "electronWinstallerConfig": {
         "name": "bcoin",
         "certificateFile": "./cert.pfx"

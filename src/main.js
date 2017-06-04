@@ -3,6 +3,8 @@ const electron = require('electron')
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+// To know if we want to have dev tools or not
+const isDev = require('electron-is-dev')
 
 const path = require('path')
 const url = require('url')
@@ -14,7 +16,9 @@ const updater = require('./updater.js')
 let mainWindow
 
 // Handle squirrel event. Avoid calling for updates when install
-if(require('electron-squirrel-startup')) app.quit();
+if(require('electron-squirrel-startup')) {
+  app.quit()
+}
 
 function createWindow () {
   // Create the browser window.
@@ -27,11 +31,13 @@ function createWindow () {
     slashes: true
   }))
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools()
-
-  // Check for updates
-  updater.init()
+  if (isDev) {
+    // Open the DevTools.
+    mainWindow.webContents.openDevTools()
+  } else {
+    // Check for updates
+    updater.init()
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

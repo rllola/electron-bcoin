@@ -14,66 +14,35 @@ function init () {
 function initDarwinWin32 () {
   electron.autoUpdater.on(
     'error',
-    (err) => {
-      console.error(`Update error: ${err.message}`)
-      electron.dialog.showMessageBox({
-        type: 'info',
-        buttons: ['OK'],
-        title: "Update Error",
-        message: err.message
-      }, null)
-    }
-  )
+    (err) => console.error(`Update error: ${err.message}`))
 
   electron.autoUpdater.on(
     'checking-for-update',
-    () => {
-      console.log('Checking for update')
-      electron.dialog.showMessageBox({
-        type: 'info',
-        buttons: ['OK'],
-        title: "Checking Updates",
-        message: "We are looking for updates"
-      }, null)
-    }
-  )
+    () => console.log('Checking for update'))
 
   electron.autoUpdater.on(
     'update-available',
-    () => {
-      console.log('Update available')
-      electron.dialog.showMessageBox({
-        type: 'info',
-        buttons: ['OK'],
-        title: "Update Available",
-        message: "Update available"
-      }, null)
-    }
-  )
+    () => console.log('Update available'))
 
   electron.autoUpdater.on(
     'update-not-available',
-    () => {
-      console.log('No update available')
-      electron.dialog.showMessageBox({
-        type: 'info',
-        buttons: ['OK'],
-        title: "No Update Available",
-        message: "No update available"
-      }, null)
-    }
-  )
+    () => console.log('No update available'))
 
+  // Ask the user if update is available
   electron.autoUpdater.on(
     'update-downloaded',
-    (e, notes, name, date, url) => {
-      console.log(`Update downloaded: ${name}: ${url}`)
-      electron.dialog.showMessageBox({
-        type: 'info',
-        buttons: ['OK'],
-        title: "Update Downloaded",
-        message: name
-      }, null)
+    (event, releaseNotes, releaseName) => {
+      dialog.showMessageBox(window, {
+        type: 'question',
+        buttons: ['Update', 'Cancel'],
+        defaultId: 0,
+        message: `Version ${releaseName} is available, do you want to install it now?`,
+        title: 'Update available'
+      }, response => {
+        if (response === 0) {
+          electron.autoUpdater.quitAndInstall()
+        }
+      })
     }
   )
 
