@@ -15,11 +15,6 @@ const updater = require('./updater.js')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-// Handle squirrel event. Avoid calling for updates when install
-if(require('electron-squirrel-startup')) {
-  app.quit()
-}
-
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
@@ -35,6 +30,11 @@ function createWindow () {
     // Open the DevTools.
     mainWindow.webContents.openDevTools()
   } else {
+    // Handle squirrel event. Avoid calling for updates when install
+    if(require('electron-squirrel-startup')) {
+      console.log('Squirrel events handle')
+      app.quit()
+    }
     // Check for updates
     updater.init()
   }
