@@ -34,9 +34,13 @@ function createWindow () {
     if(require('electron-squirrel-startup')) {
       console.log('Squirrel events handle')
       app.quit()
+      // Hack because app.quit() is not immediate
+      process.exit(0)
     }
     // Check for updates
-    updater.init()
+    mainWindow.webContents.once("did-frame-finish-load", function (event) {
+      updater.init()
+    })
   }
 
   // Emitted when the window is closed.

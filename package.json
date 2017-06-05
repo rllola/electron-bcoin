@@ -1,7 +1,7 @@
 {
   "name": "bcoin",
   "productName": "Bcoin",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Try using bcoin in electron",
   "main": "src/main.js",
   "private": true,
