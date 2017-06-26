@@ -1,4 +1,5 @@
 const electron = require('electron')
+const {crashReporter} = require('electron')
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
@@ -19,6 +20,14 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
+
+  crashReporter.start({
+    productName: 'Bcoin',
+    companyName: 'Lola',
+    submitURL: 'https://lola.sp.backtrace.io:6098/post?format=minidump&token=bb688def61c0d0cd254551ef7be6666d64038549d289808e76861cf7ad97611b',
+    uploadToServer: true
+  })
+
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
@@ -29,6 +38,8 @@ function createWindow () {
   if (isDev) {
     // Open the DevTools.
     mainWindow.webContents.openDevTools()
+
+    process.crash()
   } else {
     // Handle squirrel event. Avoid calling for updates when install
     if(require('electron-squirrel-startup')) {
